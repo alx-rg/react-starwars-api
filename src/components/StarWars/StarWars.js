@@ -8,8 +8,6 @@ function StarWars() {
   const [data, setData] = useState(null);
   const [list, setList] = useState([]);
   
-  let newList = [];
-
   async function fetchCharInfo(id) {
     try {
       const res = await fetch(`https://swapi.dev/api/people/${id}`);
@@ -18,9 +16,15 @@ function StarWars() {
 
       console.log(data)
       const name = data.name
+      const height = data.height;
+      const birth = data.birth_year;
+      const skin_color = data.skin_color;
 
       setData({
         name,
+        height,
+        birth,
+        skin_color,
       })
       return [data, null];
     }catch(err) {
@@ -29,12 +33,13 @@ function StarWars() {
   }
 
   function newCharacter() {
-    newList.push(data);
-    setList(newList);
+    const newerList = [...list, data]
+    console.log(newerList)
+    setList(newerList)
   }
 
   return (
-    <div>
+    <div className="four wide column" >
       <form onSubmit={e => {
         e.preventDefault();
       }}>
@@ -44,8 +49,12 @@ function StarWars() {
         />
         <button onClick={() => fetchCharInfo(id)}>Submit</button>
       </form>
+      <br></br>
       {data && <DisplayInfo {...data} />}
-      <button onClick={() => newCharacter()}>Save</button>
+      <br></br>
+      <button onClick={() => newCharacter()}><i className="save icon"></i>Save</button>
+      <div>
+      </div>
     </div>
   )
 }
