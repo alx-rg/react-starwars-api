@@ -6,7 +6,7 @@ import "../StarWars/StarWars.css"
 
 
 function StarWars() {
-  const [id, setId] = useState(3);
+  let [id, setId] = useState(3);
   const [data, setData] = useState(null);
   const [list, setList] = useState([]);
   
@@ -15,6 +15,25 @@ function StarWars() {
       const res = await fetch(`https://swapi.dev/api/people/${id}`);
       // if (!res.ok) return [null, new Error(res.statusText)];
       const data = await res.json()
+      
+      const homeLink = data.homeworld;
+      const homeRes = await fetch(homeLink);
+      const homeData = await homeRes.json();
+      const homeWorld = homeData.name;
+
+
+      const filmsRes = await Promise.all(data.films.map((film) => fetch(film)));
+      const filmsData = await Promise.all(filmsRes.map((filmRes) => filmRes.json()));
+      data.films = filmsData;
+      const filmsTitle = filmsData.map(film => film.title)
+      console.log(filmsTitle)
+      // let film = []
+      // const filmsArray = data.films.map(film)
+      // console.log(filmsArray)
+      // const filmsRes = await fetch(filmsArray)
+      // const filmsMap = filmsRes.map(filmsRes)
+      // const films
+
 
       console.log(data)
       const name = data.name
@@ -27,6 +46,8 @@ function StarWars() {
         height,
         birth,
         skin_color,
+        homeWorld,
+        filmsTitle,
       })
       return [data, null];
     }catch(err) {
@@ -44,7 +65,14 @@ function StarWars() {
     <div className="StarWars">
       <section className="Input">
         <form onSubmit={e => {
-          e.preventDefault();
+          e.preventDefault()
+          if (id < "1") {
+            id = "1"
+          } else if (id === "17") {
+            id = "18"
+          } else if (id > "83") {
+            id = "83"
+          };
         }}>
           <input
             onChange={(e) => setId(e.target.value)}
