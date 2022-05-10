@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from 'react';
 import DisplayInfo from "../DisplayInfo/DisplayInfo"
+import DisplayList from "../DisplayList/DisplayList";
+import "../StarWars/StarWars.css"
 
 
 function StarWars() {
@@ -39,22 +41,27 @@ function StarWars() {
   }
 
   return (
-    <div className="four wide column" >
-      <form onSubmit={e => {
-        e.preventDefault();
-      }}>
-        <input
-          onChange={(e) => setId(e.target.value)}
-          value={id}
-        />
-        <button onClick={() => fetchCharInfo(id)}>Submit</button>
-      </form>
-      <br></br>
-      {data && <DisplayInfo {...data} />}
-      <br></br>
-      <button onClick={() => newCharacter()}><i className="save icon"></i>Save</button>
-      <div>
-      </div>
+    <div className="StarWars">
+      <section className="Input">
+        <form onSubmit={e => {
+          e.preventDefault();
+        }}>
+          <input
+            onChange={(e) => setId(e.target.value)}
+            value={id}
+            />
+          <button onClick={() => fetchCharInfo(id)}>Submit</button>
+        </form>
+        <br></br>
+        {data && <DisplayInfo {...data} />}
+        <br></br>
+        <button onClick={() => newCharacter()}><i className="save icon"></i>Save</button>
+      </section>
+      <section className="List">
+        <div>
+          <DisplayList list={list}/>
+        </div>
+      </section>
     </div>
   )
 }

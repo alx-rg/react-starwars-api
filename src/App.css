@@ -1,5 +1,9 @@
 .App {
-  text-align: center;
+  text-align: left;
+}
+
+.App h3 {
+  color: rgb(44, 167, 255);
 }
 
 .App-logo {
@@ -21,7 +25,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: grey;
+  color: rgb(199, 199, 199);
 }
 
 .App-link {

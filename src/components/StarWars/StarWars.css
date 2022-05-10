@@ -1,0 +1,18 @@
+.StarWars {
+  display: flex;
+  align-items: flex-start;
+  text-align: center;
+  margin-left: 1rem;
+}
+
+.StarWars section {
+  width: 100%;
+}
+
+.StarWars .Input {
+  margin-right: 2rem;
+}
+
+.StarWars .List {
+  margin-left: 2rem;
+}
