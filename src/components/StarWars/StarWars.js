@@ -3,6 +3,14 @@ import { useState } from 'react';
 import DisplayInfo from "../DisplayInfo/DisplayInfo"
 import DisplayList from "../DisplayList/DisplayList";
 import "../StarWars/StarWars.css"
+import Button from '@mui/material/Button';
+import { ButtonGroup, TextField, Typography, Container, Paper, Grid } from "@mui/material";
+import SaveIcon from "@mui/icons-material/Save"
+import SearchIcon from "@mui/icons-material/Search"
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 
 function StarWars() {
@@ -62,35 +70,51 @@ function StarWars() {
   }
 
   return (
-    <div className="StarWars">
-      <section className="Input">
-        <form onSubmit={e => {
-          e.preventDefault()
-          if (id < "1") {
-            id = "1"
-          } else if (id === "17") {
-            id = "18"
-          } else if (id > "83") {
-            id = "83"
-          };
-        }}>
-          <input
-            onChange={(e) => setId(e.target.value)}
-            value={id}
+    <Container maxWidth="md"> 
+      <div className="StarWars">
+        <section className="Input">
+          <form onSubmit={e => {
+            e.preventDefault()
+            if (id < "1") {
+              id = "1"
+            } else if (id === "17") {
+              id = "18"
+            } else if (id > "83") {
+              id = "83"
+            };
+          }}>
+            
+            <Typography variant="h5">
+              Search a number:
+            </Typography>
+            <TextField
+              variant="filled" 
+              color="primary"
+              type="number"
+              label="Pick a Number (But not 17)"
+              onChange={(e) => setId(e.target.value)}
+              value={id}
             />
-          <button onClick={() => fetchCharInfo(id)}>Submit</button>
-        </form>
-        <br></br>
-        {data && <DisplayInfo {...data} />}
-        <br></br>
-        <button onClick={() => newCharacter()}><i className="save icon"></i>Save</button>
-      </section>
-      <section className="List">
-        <div>
-          <DisplayList list={list}/>
-        </div>
-      </section>
-    </div>
+            {/* <input
+              onChange={(e) => setId(e.target.value)}
+              value={id}
+              /> */}
+          </form>
+          <ButtonGroup variant="contained" size="large">
+          <Button startIcon={<SearchIcon />} onClick={() => fetchCharInfo(id)}>Search</Button>
+          <Button startIcon={<SaveIcon />} onClick={() => newCharacter()}>Save</Button>
+          </ButtonGroup>
+          <br></br>
+          {data && <DisplayInfo {...data} />}
+          <br></br>
+        </section>
+        <section className="List">
+          <div>
+            <DisplayList list={list}/>
+          </div>
+        </section>
+      </div>
+    </Container>
   )
 }
 

@@ -1,9 +1,15 @@
 .App {
   text-align: left;
+  margin-top: 60px;
 }
 
 .App h3 {
   color: rgb(44, 167, 255);
+}
+
+.App h5 {
+  font-size: 2rem;
+  color: rgb(255, 127, 150);
 }
 
 .App-logo {
@@ -17,8 +23,25 @@
   }
 }
 
+input {
+  color: grey !important;
+  font-size: 1.5rem !important;
+
+}
+
+p {
+  font-size: large;
+  margin: 0;
+  text-align: left;
+}
+ul {
+  font-size: medium;
+  margin: 0;
+  text-align: left;
+}
+
 .App-header {
-  background-color: #282c34;
+  background-color: #282c34bc;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

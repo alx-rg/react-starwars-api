@@ -6,8 +6,8 @@ function DisplayList(props) {
   const { list } = props;
   const savedCharacters = list.map((actor) => (
     <div key={actor.name}>
-      <h1>{actor.name}</h1>
       <DisplayInfo {...actor}/>
+      <hr></hr>
     </div>
   ))
 

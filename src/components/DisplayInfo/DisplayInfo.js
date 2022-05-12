@@ -10,9 +10,9 @@ function DisplayInfo(props) {
   return (
     <div>
       <div>
-        <h3>Name: {name}</h3>
-        <p>Height: {height} cm</p><br></br>
-        <p>DOB: {birth}</p><br></br>
+        <p>Name: {name}</p>
+        <p>Height: {height} cm</p>
+        <p>DOB: {birth}</p>
         <p>Metal/Skin Color: {skin_color}</p>
         <p>Homeworld: {homeWorld}</p>
         <p>{name} appears in:</p>
